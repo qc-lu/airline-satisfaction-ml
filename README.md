@@ -1,45 +1,52 @@
-# Airline Satisfaction Prediction (SVM)
+# Airline Satisfaction Prediction (Machine Learning Pipeline)
 
 ## 📌 Overview
-This project aims to predict airline passenger satisfaction using machine learning models based on customer and flight-related features.
+This project builds a complete machine learning pipeline to predict airline passenger satisfaction based on customer and flight-related features.
 
-The focus is on building a complete machine learning pipeline, including data preprocessing, feature engineering, model training, and evaluation.
+The goal is not only model performance, but also demonstrating a structured and reproducible ML workflow, including data preprocessing, feature engineering, model training, and evaluation.
 
 ---
 
 ## 📊 Dataset
-- Source: Kaggle Airline Passenger Satisfaction dataset
-- Data includes passenger attributes such as:
-  - Customer type
-  - Travel type
-  - Seat class
-  - Service ratings
-- Target:
-  - Satisfaction (1: satisfied, 0: neutral or dissatisfied)
+
+The dataset used in this project is from Kaggle:
+
+Airline Passenger Satisfaction Dataset  
+https://www.kaggle.com/datasets/teejmahal20/airline-passenger-satisfaction
+
+Due to size limitations, the dataset is not included in this repository.
+
+After downloading, place the files in:
+
+
+data/
+├── train.csv
+└── test.csv
+
 
 ---
 
-## ⚙️ Method
+## ⚙️ Pipeline
 
 ### 1. Data Preprocessing
 - Removed unnecessary columns (`id`, `Unnamed`)
 - Handled missing values
-- Encoded categorical variables into numerical form
-- Applied Z-score normalization
+- Encoded categorical variables
+- Standardized features using Z-score normalization
 
 ### 2. Feature Engineering
-- Dropped low-impact features (e.g., gate location)
-- Ensured consistent preprocessing between train and test data
+- Removed low-impact features (e.g., gate location)
+- Ensured consistent preprocessing between training and testing
 
 ### 3. Model Training
-Trained multiple SVM models with different kernels:
+Trained multiple SVM models:
 
 - Linear kernel
 - RBF kernel
 - Polynomial kernel
 
 ### 4. Evaluation
-- Accuracy (error rate)
+- Error rate (classification error)
 - Confusion matrix
 
 ---
@@ -56,7 +63,7 @@ Trained multiple SVM models with different kernels:
 
 ---
 
-## 🔍 Confusion Matrix (Example: RBF)
+## 🔍 Confusion Matrix (RBF)
 
 |               | Predicted 0 | Predicted 1 |
 |---------------|-------------|-------------|
@@ -70,33 +77,29 @@ Trained multiple SVM models with different kernels:
 ### 1. Install dependencies
 ```bash
 pip install -r requirements.txt
-
 2. Train models
-```bash
 python src/train.py
-
 3. Evaluate models
-```bash
 python src/evaluate.py
-
 📂 Project Structure
 airline-satisfaction-ml/
-├── data/
-├── src/
-├── models/
+├── data/        # dataset (not included)
+├── src/         # training & evaluation scripts
+├── models/      # saved models & preprocessing parameters
 ├── README.md
 ├── requirements.txt
 💡 Key Learnings
-Feature preprocessing significantly impacts model performance
-Kernel selection plays a critical role in SVM effectiveness
-Ensuring consistent preprocessing between train and test data is essential
-Engineering a reproducible ML pipeline is as important as model accuracy
+Feature preprocessing has a significant impact on model performance
+Model choice (kernel selection in SVM) greatly affects accuracy
+Consistent preprocessing between training and testing is critical
+Structuring ML code as a reproducible pipeline improves usability and clarity
 🚀 Future Improvements
-Hyperparameter tuning (Grid Search)
-Replace SVM with tree-based models (e.g., XGBoost)
-Build a simple API for inference
-Add cross-validation
+Hyperparameter tuning (Grid Search / CV)
+Try tree-based models (XGBoost, LightGBM)
+Build inference API (Flask / FastAPI)
+Add cross-validation and experiment tracking
 🧠 Notes
 
-Due to the relatively large dataset size, training time varies across kernels.
-This repository focuses on building a reproducible and structured ML workflow rather than optimizing computational performance.
+This project focuses on building a reproducible and structured ML workflow rather than only optimizing model performance.
+
+Some computational trade-offs were made to ensure the code can run efficiently on a local machine.
