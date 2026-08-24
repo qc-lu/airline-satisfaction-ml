@@ -1,7 +1,10 @@
+import os                      
 import numpy as np
 import pandas as pd
 import joblib
 from sklearn.svm import SVC
+
+os.makedirs("models", exist_ok=True)   
 
 # 读取数据
 df = pd.read_csv("data/train.csv", encoding="gb2312")
