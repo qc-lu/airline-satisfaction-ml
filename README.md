@@ -25,7 +25,6 @@ data/
 
 > **Note on column names and encoding**
 >
-> This project uses a Chinese-localized version of the dataset that was provided in my university course.
 > The column headers are in Chinese (`性别`, `顾客类型`, `旅行类型`, `舱位`, `满意度`, `门位置`, ...) and the CSV
 > files are encoded in `gb2312`. The scripts read them with `encoding="gb2312"` and reference these
 > Chinese column names.
